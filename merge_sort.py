@@ -1,4 +1,5 @@
-import random
+# These modules are required for testing only.
+import random, copy
 import matplotlib.pyplot as plt
 
 def merge_sort(LIST):
@@ -24,15 +25,14 @@ def merge_sort(LIST):
     end.reverse()
     return start + end
 
-def visualize(LIST):
+def visualize(LIST, SORTED_LIST):
     '''
     Plots unsorted and sorted data.
     '''
     plt.plot(LIST)
     plt.xlabel('Random Data')
     plt.show()
-    sorted_data = merge_sort(LIST)
-    plt.plot(sorted_data)
+    plt.plot(SORTED_LIST)
     plt.xlabel('Merge Sorted Data')
     plt.show()
 
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     # Generate a list of random length between 100 and 1000.
     # and add random numbers to it.
     LIST = [random.randint(0, 1000) for i in range(random.randint(100, 1000))]
-    visualize(LIST)
+    unsortedLIST = copy.deepcopy(LIST)
+    visualize(unsortedLIST, merge_sort(LIST))
     
     
-
